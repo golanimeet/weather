@@ -1,12 +1,11 @@
 import './App.css';
 import Weath from './Weath';
 
-
 function App() {
-
-  return (<div className='w-50'>
-          <Weath/>
-  </div>
+  return (
+    <div className='w-100'>
+      <Weath />
+    </div>
   );
 }
 
