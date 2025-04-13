@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import History from "./History";
 
 export default function Weath() {
     const [city, setCity] = useState("surat");
@@ -18,7 +17,6 @@ export default function Weath() {
     const tommoDate = currentDate.getDate() + 2;
 
     const dateTime = `${month} ${date}, ${year}`;
-    
 
     // const API_KEY = "84cdb916ad8a55c00798de3566c90d41";
 
@@ -65,24 +63,8 @@ export default function Weath() {
         setWeatherData("");
     };
 
-    // const getWeatherIconUrl = (main) => {
-    //     switch (main) {
-    //         case "Smoke":
-    //             return "/clear.png";
-    //         case "Rain":
-    //             return "/rain.png";
-    //         case "Clouds":
-    //             return "/cloud.png";
-    //         case "Snow":
-    //             return "/snow.png";
-    //         default:
-    //             return null;
-
-    //     }
-    // };
-
     return (
-        <>
+        <div>
             {weatherData && (
                 <div className="d-flex justify-content-center">
                     <div className="weather-dashboard mt-5">
@@ -90,7 +72,7 @@ export default function Weath() {
                             <div className="card-header teb1">
                                 <form className="form text-center" onSubmit={handleSubmit}>
                                     <input type="search" className="input border border-black" placeholder="Enter city name..." onChange={handleInputChange} required />
-                                    <button type="submit" className="btn btn-success mx-1">Submit</button>
+                                    <button type="submit" className="btn btn-success mx-1 btn-outline-info text-dark">Submit</button>
                                 </form>
                                 <div className="d-flex">
                                     <p className="justify-content text-white mt-3">{dateTime}</p>
@@ -158,9 +140,9 @@ export default function Weath() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {weatherHistory.map((ele) => {
+                                {weatherHistory.map((ele, Index) => {
                                     return (
-                                        <tr>
+                                        <tr key={Index}>
                                             <td>{ele.date}</td>
                                             <td>{ele.city}</td>
                                             <td>{ele.temp}</td>
@@ -174,6 +156,6 @@ export default function Weath() {
                     {/* end history table */}
                 </div>
             )}
-        </>
+        </div>
     );
 }
